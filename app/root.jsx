@@ -1,5 +1,5 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-
+import stylesheet from "~/tailwind.css";
 import {
   Links,
   LiveReload,
@@ -10,7 +10,17 @@ import {
 } from "@remix-run/react";
 
 export const links = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  ...(cssBundleHref
+    ? [
+        { rel: "stylesheet", href: cssBundleHref },
+        { rel: "stylesheet", href: stylesheet },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossOrigin: "anonymous",
+        },
+      ]
+    : []),
 ];
 
 export default function App() {
